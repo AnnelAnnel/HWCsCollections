@@ -87,16 +87,25 @@ namespace ListWork
         //4.	Напечатать содержимое текстового файла t, выписывая 
         //        литеры каждой его строки в обратном порядке.
         public static void printReverse()
-        {           
+        {
+            
+            string tmpr = "Тутанхамон — фараон Древнего Египта из XVIII династии Нового царства, правивший приблизительно в 1332—1323 годах до н. э. Его обнаруженная Говардом Картером в 1922 году практически не тронутая гробница KV62 в Долине Царей стала сенсацией и возродила интерес публики к Древнему Египту. Фараон и его золотая погребальная маска (ныне выставлена в Каирском египетском музее) с тех пор остаются популярными символами, а «мистические» смерти участников экспедиции 1922 года привели к возникновению понятия «проклятие фараонов».";
+            
+            StreamWriter SW = new StreamWriter(new FileStream("myText.txt", FileMode.Create, FileAccess.Write));
+            SW.Write(tmpr);
+            SW.Close();
+
             string readPath = @"myText.txt";
-            List<string> txt = File.ReadAllLines(readPath).ToList();        
+            List<string> txt = File.ReadAllLines(readPath).ToList();
             string tmp = "";
             for (int i = 0; i < txt.Count; i++)
             {
                 tmp += txt[i];
             }
             Console.WriteLine(tmp);
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("\nПечать букв в словах текста в обратном порядке");
+            Console.ForegroundColor = ConsoleColor.White;
             string[] t2=tmp.Split(' ');
             List<string> reversed = new List<string>();
           
@@ -153,12 +162,18 @@ namespace ListWork
 
         public static void vowelsFirst()
         {
+            string tmpr = "Тутанхамон — фараон Древнего Египта из XVIII династии Нового царства, правивший приблизительно в 1332—1323 годах до н. э. Его обнаруженная Говардом Картером в 1922 году практически не тронутая гробница KV62 в Долине Царей стала сенсацией и возродила интерес публики к Древнему Египту. Фараон и его золотая погребальная маска (ныне выставлена в Каирском египетском музее) с тех пор остаются популярными символами, а «мистические» смерти участников экспедиции 1922 года привели к возникновению понятия «проклятие фараонов».";
+
+            StreamWriter SW = new StreamWriter(new FileStream("myText.txt", FileMode.Create, FileAccess.Write));
+            SW.Write(tmpr);
+            SW.Close();
+
             string readPath = @"myText.txt";
 
             List<string> txt = File.ReadAllLines(readPath).ToList();
-            string tmp = "";
-            string vowels = "АЕЁИОУЭЮЯаеёиоуыэюя";
             
+            string vowels = "АЕЁИОУЭЮЯаеёиоуыэюя";
+            string tmp = "";
             for (int i = 0; i < txt.Count; i++)
             {
                 tmp += txt[i];
@@ -199,22 +214,22 @@ namespace ListWork
         public static void positiveFirst()
         {
             //генерирую массив интов и записывю в файл:
-            //int x = 0;
-            //int[] arr = new int[20];
-            //string tmp = "";
-            //for (int i = 0; i < arr.Length; i++)
-            //{
-            //    arr[i] = rnd.Next(-20, 20);
-            //    tmp+= arr[i].ToString()+" ";
-            //}
-            //StreamWriter SW = new StreamWriter(new FileStream("myNumbers.txt", FileMode.Create, FileAccess.Write));
-            //SW.Write(tmp);
-            //SW.Close();
+            
+            int[] arr = new int[20];
+            string tmp = "";
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = rnd.Next(-20, 20);
+                tmp += arr[i].ToString() + " ";
+            }
+            StreamWriter SW = new StreamWriter(new FileStream("myNumbers.txt", FileMode.Create, FileAccess.Write));
+            SW.Write(tmp);
+            SW.Close();
 
             string readPath = @"myNumbers.txt";
 
             List<string> numbers = File.ReadAllLines(readPath).ToList();
-            string tmp = "";            
+                       
 
             for (int i = 0; i < numbers.Count; i++)
             {
@@ -229,7 +244,7 @@ namespace ListWork
             Console.WriteLine("Положительные числа");
             Console.ForegroundColor = ConsoleColor.Yellow;
             string[] tmp2 = tmp.Split(' ');
-            int n = 0;
+            
             for (int i = 0; i < tmp2.Length; i++)
             {
                 if ((!tmp2[i].StartsWith("-")))
